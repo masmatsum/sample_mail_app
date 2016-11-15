@@ -13,7 +13,7 @@ sudo vi /var/lib/pgsql/data/pg_hba.conf
 systemctl restart postgresql   # パスワードを聞かれる
 psql -U postgres
 
-CREATE DATABASE ecr;
-\c ecr
+CREATE DATABASE jnv;
+\c jnv
 
 

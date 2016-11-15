@@ -3,7 +3,7 @@ import psycopg2
 #23456789012345
 class DbManager:
     def __init__(self):
-        self.conn_str = "dbname=ecr user=postgres password=postgres"
+        self.conn_str = "dbname=jnv user=postgres password=postgres"
 
 #    def __init__(self, dbname, user, password):
 #        self.dbname = dbname
