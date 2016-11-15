@@ -3,9 +3,9 @@ from sys import argv
 import datetime
 
 def usage():
-    #TODO: 
+    #TODO: display usage when -h or -? is specified  
     #Note: argv[0] is program name
-    print(argv[0])
+    print("python3 {0} [yyyymm]".format(argv[0]))
 
 if len(argv) > 1:
     yyyymm = argv[1]
@@ -15,13 +15,10 @@ else:
     today = datetime.datetime.today()
     year = today.year
     month = today.month
-    print(today.day)
+    # TODO: timezone (set JST)
+    #print(today.year, today.month, today.day, today.hour, today.minute)
 
-print(year, month)
-#yyyymmddhhmmss = 
-
-print(argv)
-
+#print(usage())
 
 cond_tokyo    = "pref_cd = 13"
 cond_chiba    = "pref_cd = 12"
@@ -38,13 +35,14 @@ from users
 """.format(cond_tokyo=cond_tokyo, cond_kanagawa=cond_kanagawa, cond_chiba=cond_chiba, cond_others=cond_others)
 
 print(sql)
+
 dbm = DbManager()
 result = dbm.fetch_one(sql)
 print(result)
 (cnt_tokyo, cnt_chiba, cnt_kanagawa, cnt_others) = result
 
 
-text = """キャリア 現在の会員数レポート {year}年{month}月
+text = """現在の会員数レポート {year}年{month}月
 東京: {cnt_tokyo}
 千葉：{cnt_chiba}
 神奈川：{cnt_kanagawa}
