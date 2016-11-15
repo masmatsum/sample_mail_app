@@ -1,0 +1,19 @@
+systemctl start postgresql   # パスワードを聞かれる
+# この時点だと peer authentication になっている。 peer authentication だと、UNIX のuser に紐付いた形でのみpsqlでログインできる。 `psql -U <username>` のように入れない。 
+sudo -u postgres psql postgres
+postgres=# \password postgres
+Enter new password:
+Enter it again:
+postgres=# \q
+
+sudo vi /var/lib/pgsql/data/pg_hba.conf
+-local   all             all                                     peer
++local   all             all                                     md5
+
+systemctl restart postgresql   # パスワードを聞かれる
+psql -U postgres
+
+CREATE DATABASE ecr;
+\c ecr
+
+

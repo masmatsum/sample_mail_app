@@ -1,0 +1,55 @@
+## Environment
+
+OS: CentOS 7.2 on VirtualBox + Vagrant 
+
+## Install pyenv
+
+git clone https://github.com/yyuu/pyenv.git ~/.pyenv
+cat << _EOS_ >> ~/.bash_profile
+# pyenv
+export PYENV_ROOT=$HOME/.pyenv
+export PATH=$PYENV_ROOT/bin:$PATH
+eval "$(pyenv init -)"
+_EOS_
+
+. ~/.bash_profile
+
+pyenv versions 
+pyenv version 
+
+sudo yum install patch
+pyenv install 3.5.2
+pyenv rehash
+
+pyenv versions 
+
+pyenv global 3.5.2   # pyenv global は効かない説あり
+_OR_
+cd /path/to/project/dir
+pyenv local 3.5.2
+
+pyenv version 
+which python
+python --version
+
+
+## Install psycopg2
+
+yum makecache fast 
+sudo yum install openssl-devel 
+sudo yum -y install postgresql-server
+sudo yum install python-psycopg2
+sudo yum install python-devel
+sudo yum install postgresql-libs
+sudo yum install postgresql-devel
+pip install psycopg2
+
+
+### 役に立った情報
+
+[libpq-fe.h が見つけられない。 - Qiita]
+http://qiita.com/s_osa/items/9b72643c9f7185736395
+>$ sudo yum install postgresql-devel
+この情報は、 psycopg2 の公式にもなかった。
+
+
